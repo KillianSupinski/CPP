@@ -5,30 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/19 09:59:46 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/01/20 11:04:07 by ksupinsk         ###   ########.fr       */
+/*   Created: 2026/01/21 10:45:41 by ksupinsk          #+#    #+#             */
+/*   Updated: 2026/01/21 11:39:25 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-int main()
+#include "Harl.hpp"
+
+int main(int argc, char **argv)
 {
+    if(argc != 2)
     {
-        Weapon club = Weapon("crude spiked club");
-        HumanA bob("Bob", club);
-        bob.attack();
-        club.setType("some other type of club");
-        bob.attack();
+        std::cout << "You must do only one argument" << std::endl;
+        return 1;
     }
-    {
-        Weapon club = Weapon("crude spiked club");
-        HumanB jim("Jim");
-        jim.setWeapon(club);
-        jim.attack();
-        club.setType("some other type of club");
-        jim.attack();
-    }
-return 0;
+    Harl harl;
+    harl.complain(argv[1]);
 }

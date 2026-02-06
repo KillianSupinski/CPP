@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/17 16:28:17 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/01/20 11:09:35 by ksupinsk         ###   ########.fr       */
+/*   Created: 2026/01/21 10:46:14 by ksupinsk          #+#    #+#             */
+/*   Updated: 2026/01/21 10:59:59 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <string>
+#include <iostream>
 
-int main()
-{
-    int n = 5;
-    std::cout << "First test Horde" << std::endl;
-    Zombie* z = zombieHorde(n, "hello");
-    if(!z)
-    {
-        std::cout << "Invald number of zombie" << std::endl;
-        return 1;
-    }
-    for(int i = 0; i < n; i++)
-    {
-        z[i].announce();
-    }
-    delete[] z;
-    return (0);
-}
+class Harl{
+private:
+    void debug(void);
+    void info(void);
+    void warning(void);
+    void error(void);
+public:
+    Harl();
+    ~Harl();
+    void complain(std::string level);
+};
