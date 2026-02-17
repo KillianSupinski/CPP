@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 11:30:03 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/02/16 08:09:43 by ksupinsk         ###   ########.fr       */
+/*   Created: 2026/02/16 13:07:05 by ksupinsk          #+#    #+#             */
+/*   Updated: 2026/02/16 14:23:28 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "WrongAnimal.hpp"
 
-
-int main() {
-    FragTrap scav("Scavvy");
-    scav.attack("a target");
-    scav.takeDamage(30);
-    scav.beRepaired(10);
-    scav.takeDamage(100);
-    scav.attack("another target");
-    scav.highFivesGuys();
-
-    return 0;
-}
+class WrongCat : public WrongAnimal{
+public:
+    WrongCat();
+    WrongCat(const WrongCat& other);
+    WrongCat(const std::string& name);
+    WrongCat& operator=(const WrongCat& other);
+    void makeSound() const;
+    ~WrongCat();
+};

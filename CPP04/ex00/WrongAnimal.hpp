@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 11:30:03 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/02/16 08:09:43 by ksupinsk         ###   ########.fr       */
+/*   Created: 2026/02/16 13:07:15 by ksupinsk          #+#    #+#             */
+/*   Updated: 2026/02/16 14:35:32 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
 
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
+#include <string>
+#include <iostream>
 
-int main() {
-    FragTrap scav("Scavvy");
-    scav.attack("a target");
-    scav.takeDamage(30);
-    scav.beRepaired(10);
-    scav.takeDamage(100);
-    scav.attack("another target");
-    scav.highFivesGuys();
+class WrongAnimal{
+protected:
+    std::string _type;
+public:
+    WrongAnimal();
+    WrongAnimal(const WrongAnimal& other);
+    WrongAnimal(const std::string& name);
+    WrongAnimal& operator=(const WrongAnimal& other);
+    ~WrongAnimal();
+    std::string getType() const;
+    void makeSound() const;
+};
 
-    return 0;
-}
+#endif

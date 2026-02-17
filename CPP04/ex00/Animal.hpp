@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 11:30:03 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/02/16 08:09:43 by ksupinsk         ###   ########.fr       */
+/*   Created: 2026/02/16 10:18:28 by ksupinsk          #+#    #+#             */
+/*   Updated: 2026/02/16 13:51:12 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
 
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
+#include <string>
+#include <iostream>
 
-int main() {
-    FragTrap scav("Scavvy");
-    scav.attack("a target");
-    scav.takeDamage(30);
-    scav.beRepaired(10);
-    scav.takeDamage(100);
-    scav.attack("another target");
-    scav.highFivesGuys();
+class Animal{
+protected:
+    std::string _type;
+public:
+    Animal();
+    Animal(const Animal& other);
+    Animal(const std::string& name);
+    Animal& operator=(const Animal& other);
+    virtual ~Animal();
+    std::string getType() const;
+    virtual void makeSound() const;
+};
 
-    return 0;
-}
+#endif
