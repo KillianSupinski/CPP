@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/16 10:18:36 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/02/25 11:25:38 by ksupinsk         ###   ########.fr       */
+/*   Created: 2026/02/16 10:18:33 by ksupinsk          #+#    #+#             */
+/*   Updated: 2026/02/25 11:24:52 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class Dog : public AAnimal{
+class Cat : public AAnimal{
 private:
     Brain* _brain;
 public:
-    Dog();
-    Dog(const Dog& other);
-    Dog(const std::string& name);
-    Dog& operator=(const Dog& other);
+    Cat();
+    Cat(const Cat& other);
+    Cat(const std::string& name);
+    Cat& operator=(const Cat& other);
     void makeSound() const;
-    ~Dog();
+    ~Cat();
     Brain* getBrain() const;
 };

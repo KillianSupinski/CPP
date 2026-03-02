@@ -6,7 +6,7 @@
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 11:30:03 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/02/17 15:46:18 by ksupinsk         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:30:16 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int main()
 {
 const int N = 10;
-const Animal* animals[N];
+AAnimal* animals[N];
 for (int i = 0; i < N; i++)
 {
     if (i % 2 == 0)
@@ -36,7 +36,7 @@ for (int i = 0; i < N; i++)
     Dog d1;
     d1.getBrain()->setIdea(0, "pizza");
 
-    Dog d2(d1); // copy constructor
+    Dog d2(d1);
     std::cout << "d1 idea0: " << d1.getBrain()->getIdea(0) << "\n";
     std::cout << "d2 idea0: " << d2.getBrain()->getIdea(0) << "\n";
 
@@ -46,7 +46,7 @@ for (int i = 0; i < N; i++)
     std::cout << "d2 idea0: " << d2.getBrain()->getIdea(0) << "\n";
 
     Dog d3;
-    d3 = d1; // assignment operator
+    d3 = d1;
     std::cout << "d3 idea0 after assign: " << d3.getBrain()->getIdea(0) << "\n";
 
     d1.getBrain()->setIdea(0, "burger");
@@ -54,7 +54,6 @@ for (int i = 0; i < N; i++)
     std::cout << "d1 idea0: " << d1.getBrain()->getIdea(0) << "\n";
     std::cout << "d3 idea0: " << d3.getBrain()->getIdea(0) << "\n";
 
-    // Bonus: vérifier que les Brain ne sont pas les mêmes pointeurs
     std::cout << "brain addresses:\n";
     std::cout << "d1 brain: " << d1.getBrain() << "\n";
     std::cout << "d2 brain: " << d2.getBrain() << "\n";

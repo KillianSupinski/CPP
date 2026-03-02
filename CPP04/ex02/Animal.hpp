@@ -6,7 +6,7 @@
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 10:18:28 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/02/17 15:02:16 by ksupinsk         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:20:05 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 #include <iostream>
 #include "Brain.hpp"
 
-class Animal{
+class AAnimal{
 protected:
     std::string _type;
 public:
-    Animal();
-    Animal(const Animal& other);
-    Animal(const std::string& name);
-    Animal& operator=(const Animal& other);
-    virtual ~Animal();
+    AAnimal();
+    AAnimal(const AAnimal& other);
+    AAnimal(const std::string& name);
+    AAnimal& operator=(const AAnimal& other);
+    virtual ~AAnimal();
     std::string getType() const;
-    virtual void makeSound() const;
+    virtual void makeSound() const = 0;
 };
 
 #endif
