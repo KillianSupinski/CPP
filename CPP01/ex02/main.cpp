@@ -6,7 +6,7 @@
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 09:42:44 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/01/19 09:57:23 by ksupinsk         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:32:53 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,5 @@ int main()
 
     std::cout << "Value of string is : " << string << std::endl;
     std::cout << "Value of stringPTR is : " << *stringPTR << std::endl;
-    std::cout << "Value of stringREF is : " << stringREF << std::endl;
-
-    
+    std::cout << "Value of stringREF is : " << stringREF << std::endl;   
 }

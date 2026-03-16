@@ -6,7 +6,7 @@
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:29:34 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/01/17 18:14:32 by ksupinsk         ###   ########.fr       */
+/*   Updated: 2026/03/16 14:07:28 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Zombie* newZombie(const std::string &name)
     try {
         z = new Zombie(name);
     } catch (const std::bad_alloc& e){
-        std::cerr << "Allocation failled" << std::endl;
+        std::cerr << "Allocation failled : "<< e.what() << std::endl;
         return NULL;
     }
     return (z);

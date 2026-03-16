@@ -6,7 +6,7 @@
 /*   By: ksupinsk <ksupinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 16:36:44 by ksupinsk          #+#    #+#             */
-/*   Updated: 2026/01/20 11:08:37 by ksupinsk         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:53:51 by ksupinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Zombie* zombieHorde(int N, std::string name)
             z[i].setName(name);
         }
     } catch(const std::bad_alloc& e){
-        std::cerr << "Allocation failled" << std::endl;
+        std::cerr << "Allocation failled : "<< e.what() << std::endl;
         return NULL;
     }
     return (z);
