@@ -1,0 +1,12 @@
+#include "Base.hpp"
+
+int main() {
+    srand(static_cast<unsigned int>(time(NULL)));
+    Base* basePtr = generate();
+    std::cout << "Identifying using pointer: ";
+    identify(basePtr);
+    std::cout << "Identifying using reference: ";
+    identify(*basePtr);
+    delete basePtr;
+    return 0;
+}
