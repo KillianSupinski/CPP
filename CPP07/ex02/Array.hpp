@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+
+
+template<typename T>
+class Array
+{
+    public:
+        Array();
+        Array(unsigned int n);
+        Array(const Array& other);
+        Array& operator=(const Array& other);
+        ~Array();
+
+        unsigned int size() const;
+        T& operator[](unsigned int index);
+        const T& operator[](unsigned int index) const;
+
+    private:
+        unsigned int _size;
+        T* _array;
+};
