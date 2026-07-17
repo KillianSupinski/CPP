@@ -1,42 +1,47 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
+
+#include <cstdlib>
 #include <ctime>
 
 int main()
 {
+    std::srand(std::time(NULL));
     try
     {
         Bureaucrat boss("Boss", 1);
         Intern intern;
+        AForm* form;
 
-        AForm* form = intern.makeForm("robotomy request", "Bender");
-        AForm* form2 = intern.makeForm("shrubbery creation", "Garden");
-        AForm* form3 = intern.makeForm("presidential pardon", "Marvin");
-
+        form = intern.makeForm("robotomy request", "Bender");
         if (form)
         {
-            form->beSigned(boss);
-            form->execute(boss);
+            boss.signForm(*form);
+            boss.executeForm(*form);
             delete form;
         }
-        if (form2)
+
+        form = intern.makeForm("shrubbery creation", "Garden");
+        if (form)
         {
-            form2->beSigned(boss);
-            form2->execute(boss);
-            delete form2;
+            boss.signForm(*form);
+            boss.executeForm(*form);
+            delete form;
         }
-        if (form3)
+
+        form = intern.makeForm("presidential pardon", "Marvin");
+        if (form)
         {
-            form3->beSigned(boss);
-            form3->execute(boss);
-            delete form3;
+            boss.signForm(*form);
+            boss.executeForm(*form);
+            delete form;
         }
+
+        form = intern.makeForm("unknown form", "Nobody");
+        if (form)
+            delete form;
     }
-    catch (std::exception& e)
+    catch (const std::exception& e)
     {
         std::cout << "Error: " << e.what() << std::endl;
     }

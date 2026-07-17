@@ -1,4 +1,3 @@
-
 #include "Bureaucrat.hpp"
 
 int main()
@@ -6,7 +5,7 @@ int main()
     try
     {
         Bureaucrat b1("John", 1);
-        std::cout << b1.getName() << " has grade " << b1.getGrade() << std::endl;
+        std::cout << b1 << std::endl;
         b1.incrementGrade();
     }
     catch (const std::exception& e)
@@ -17,7 +16,7 @@ int main()
     try
     {
         Bureaucrat b2("Jane", 150);
-        std::cout << b2.getName() << " has grade " << b2.getGrade() << std::endl;
+        std::cout << b2 << std::endl;
         b2.decrementGrade();
     }
     catch (const std::exception& e)
@@ -25,13 +24,14 @@ int main()
         std::cerr << "Exception: " << e.what() << std::endl;
     }
 
-    try{
+    try
+    {
         Bureaucrat b3("valid", 75);
-        std::cout << b3.getName() << " has grade " << b3.getGrade() << std::endl;
+        std::cout << b3 << std::endl;
         b3.incrementGrade();
-        std::cout << b3.getName() << " has grade " << b3.getGrade() << std::endl;
+        std::cout << b3 << std::endl;
         b3.decrementGrade();
-        std::cout << b3.getName() << " has grade " << b3.getGrade() << std::endl;
+        std::cout << b3 << std::endl;
     }
     catch (const std::exception& e)
     {

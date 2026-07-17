@@ -44,14 +44,13 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target)
         &Intern::createRobotomyRequestForm,
         &Intern::createPresidentialPardonForm
     };
-
     std::string formNames[] = {
         "shrubbery creation",
         "robotomy request",
         "presidential pardon"
     };
 
-    for (size_t i = 0; i < sizeof(formNames) / sizeof(formNames[0]); ++i)
+    for (int i = 0; i < 3; ++i)
     {
         if (formName == formNames[i])
         {
@@ -59,7 +58,6 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target)
             return (this->*formCreationFuncs[i])(target);
         }
     }
-
-    std::cout << "Error: Unknown form name '" << formName << "'" << std::endl;
-    return nullptr;
+    std::cout << "Error: unknown form name '" << formName << "'" << std::endl;
+    return NULL;
 }
