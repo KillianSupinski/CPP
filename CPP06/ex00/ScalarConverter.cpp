@@ -1,6 +1,7 @@
 #include "ScalarConverter.hpp"
 
 #include <cctype>
+#include <cerrno>
 #include <climits>
 #include <cmath>
 #include <cstdlib>
@@ -11,7 +12,6 @@
 
 namespace
 {
-// Keeping the detected type explicit makes convert() easy to follow.
 enum LiteralType
 {
 	INVALID_LITERAL,
@@ -127,7 +127,7 @@ LiteralType	detectLiteralType(const std::string& literal)
 	return (INVALID_LITERAL);
 }
 
-double	literalToDouble(const std::string& literal, LiteralType type)
+double	literalToDouble(const std::string& literal, LiteralType type, bool& valid)
 {
 	double	value;
 	float	floatValue;
@@ -138,12 +138,24 @@ double	literalToDouble(const std::string& literal, LiteralType type)
 			return (static_cast<double>(literal[1]));
 		return (static_cast<double>(literal[0]));
 	}
-	// strtod is C++98-compatible and also understands nan/inf pseudo-literals.
+	errno = 0;
 	value = std::strtod(literal.c_str(), NULL);
+	if (errno == ERANGE)
+	{
+		valid = false;
+		return (0);
+	}
 	if (type == INT_LITERAL && value >= INT_MIN && value <= INT_MAX)
 		return (static_cast<double>(static_cast<int>(value)));
 	if (type == FLOAT_LITERAL)
 	{
+		if (!isPseudoFloat(literal)
+			&& (value < -std::numeric_limits<float>::max()
+				|| value > std::numeric_limits<float>::max()))
+		{
+			valid = false;
+			return (0);
+		}
 		floatValue = static_cast<float>(value);
 		return (static_cast<double>(floatValue));
 	}
@@ -169,7 +181,6 @@ std::string	formatDouble(double value)
 {
 	std::ostringstream	output;
 
-	// Whole values must show one digit after the dot: 42.0.
 	if (isWhole(value))
 		output << std::fixed << std::setprecision(1);
 	output << value;
@@ -255,7 +266,7 @@ void	ScalarConverter::convert(std::string literal)
 	valid = (type != INVALID_LITERAL);
 	// Convert once, then each print function handles its own limits.
 	if (valid)
-		value = literalToDouble(literal, type);
+		value = literalToDouble(literal, type, valid);
 	else
 		value = 0;
 	printChar(value, valid);
@@ -263,3 +274,5 @@ void	ScalarConverter::convert(std::string literal)
 	printFloat(value, valid);
 	printDouble(value, valid);
 }
+
+ScalarConverter::~ScalarConverter() {}

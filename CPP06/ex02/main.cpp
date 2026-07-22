@@ -1,7 +1,7 @@
 #include "Base.hpp"
 
 int main() {
-    srand(static_cast<unsigned int>(time(NULL)));
+    srand(time(NULL));
     Base* basePtr = generate();
     std::cout << "Identifying using pointer: ";
     identify(basePtr);

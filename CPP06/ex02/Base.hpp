@@ -1,6 +1,9 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
+#ifndef BASE_HPP
+# define BASE_HPP
+
+# include <iostream>
+# include <cstdlib>
+# include <ctime>
 
 class Base {
     public:
@@ -15,3 +18,5 @@ class C : public Base {};
 void identify(Base* p);
 void identify(Base& p);
 Base* generate(void);
+
+#endif
