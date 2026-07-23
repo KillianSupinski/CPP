@@ -1,14 +1,20 @@
+#ifndef ITER_HPP
+# define ITER_HPP
+
+#include <cstddef>
 #include <iostream>
 #include <string>
 
 template<typename T, typename F>
-void iter(T* array, size_t length, F func)
+void iter(T* array, std::size_t length, F func)
 {
-    if(!array || length == 0 || !func)
+    if(!array || length == 0)
         return;
 
-    for (size_t i = 0; i < length; ++i)
+    for (std::size_t i = 0; i < length; ++i)
     {
         func(array[i]);
     }
 }
+
+#endif

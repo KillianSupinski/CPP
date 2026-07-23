@@ -1,12 +1,12 @@
 #include "Array.hpp"
 
 template<typename T>
-Array<T>::Array() : _size(0), _array(nullptr)
+Array<T>::Array() : _size(0), _array(NULL)
 {
 }
 
 template<typename T>
-Array<T>::Array(unsigned int n) : _size(n), _array(new T[n])
+Array<T>::Array(unsigned int n) : _size(n), _array(new T[n]())
 {
 }
 
@@ -25,13 +25,22 @@ Array<T>& Array<T>::operator=(const Array<T>& other)
 {
     if (this != &other)
     {
-        delete[] _array;
-        _size = other._size;
-        _array = new T[_size];
-        for (unsigned int i = 0; i < _size; ++i)
+        T* newArray = new T[other._size]();
+        try
         {
-            _array[i] = other._array[i];
+            for (unsigned int i = 0; i < other._size; ++i)
+            {
+                newArray[i] = other._array[i];
+            }
         }
+        catch (...)
+        {
+            delete[] newArray;
+            throw;
+        }
+        delete[] _array;
+        _array = newArray;
+        _size = other._size;
     }
     return *this;
 }

@@ -16,7 +16,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp whatever.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

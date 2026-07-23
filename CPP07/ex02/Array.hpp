@@ -1,6 +1,10 @@
-#include <iostream>
-#include <string>
 
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
+#include <cstddef>
+#include <iostream>
+#include <stdexcept>
+#include <string>
 
 template<typename T>
 class Array
@@ -20,3 +24,7 @@ class Array
         unsigned int _size;
         T* _array;
 };
+
+#include "Array.tpp"
+
+#endif
